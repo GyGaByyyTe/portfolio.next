@@ -35,12 +35,16 @@ export default function Calculator() {
   }
 
   return (
-    <div className="w-full max-w-sm mx-auto bg-white rounded-lg shadow-lg p-6">
+    <div className="w-full max-w-xs sm:max-w-sm mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6">
       <div className="mb-4">
-        <div className="text-right text-gray-500 text-sm h-6">{equation}</div>
-        <div className="text-right text-3xl font-bold">{display}</div>
+        <div className="text-right text-gray-500 text-sm h-6 font-mono">
+          {equation}
+        </div>
+        <div className="text-right text-2xl sm:text-3xl font-bold font-mono overflow-x-auto">
+          {display}
+        </div>
       </div>
-      <div className="grid grid-cols-4 gap-2">
+      <div className="grid grid-cols-4 gap-2 sm:gap-3">
         {['7', '8', '9', '/', '4', '5', '6', '*', '1', '2', '3', '-', '0', '.', '=', '+'].map((btn) => (
           <button
             key={btn}
@@ -49,7 +53,7 @@ export default function Calculator() {
               else if (['+', '-', '*', '/'].includes(btn)) handleOperator(btn)
               else handleNumber(btn)
             }}
-            className={`p-4 text-lg font-semibold rounded-lg ${
+            className={`p-3 sm:p-4 text-base sm:text-lg font-semibold rounded-lg transition-colors duration-200 ${
               btn === '='
                 ? 'bg-blue-600 text-white hover:bg-blue-700'
                 : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
@@ -60,7 +64,7 @@ export default function Calculator() {
         ))}
         <button
           onClick={handleClear}
-          className="col-span-4 p-4 text-lg font-semibold rounded-lg bg-red-100 text-red-800 hover:bg-red-200"
+          className="col-span-4 p-3 sm:p-4 text-base sm:text-lg font-semibold rounded-lg bg-red-100 text-red-800 hover:bg-red-200 transition-colors duration-200"
         >
           Clear
         </button>

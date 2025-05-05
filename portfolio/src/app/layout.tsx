@@ -27,7 +27,9 @@ export default function RootLayout({
                   Portfolio
                 </Link>
               </div>
-              <div className="flex items-center space-x-8">
+              
+              {/* Desktop Navigation */}
+              <div className="hidden md:flex items-center space-x-8">
                 <Link href="/" className="text-gray-600 hover:text-gray-900">
                   Home
                 </Link>
@@ -38,19 +40,66 @@ export default function RootLayout({
                   Projects
                 </Link>
               </div>
+
+              {/* Mobile Navigation Button */}
+              <div className="md:hidden flex items-center">
+                <button
+                  type="button"
+                  className="text-gray-600 hover:text-gray-900"
+                  aria-label="Toggle menu"
+                >
+                  <svg
+                    className="h-6 w-6"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            {/* Mobile Navigation Menu */}
+            <div className="hidden md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1">
+                <Link
+                  href="/"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/experience"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                >
+                  Experience
+                </Link>
+                <Link
+                  href="/projects"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+                >
+                  Projects
+                </Link>
+              </div>
             </div>
           </div>
         </nav>
+
         <main className="pt-16 min-h-screen bg-gray-50">
           {children}
         </main>
+
         <footer className="bg-white border-t">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="text-gray-600">
+            <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+              <div className="text-gray-600 text-center md:text-left">
                 © {new Date().getFullYear()} Your Name. All rights reserved.
               </div>
-              <div className="flex space-x-6 mt-4 md:mt-0">
+              <div className="flex space-x-6">
                 <a
                   href="https://github.com/yourusername"
                   target="_blank"

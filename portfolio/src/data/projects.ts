@@ -50,8 +50,8 @@ export const projects: Record<string, Project> = {
     technologies: ['React', 'D3.js', 'Node.js'],
     githubUrl: 'https://github.com/yourusername/project-two',
     liveUrl: 'https://project-two.com',
-    isEmbedded: true,
-    embeddedComponent: 'ProjectTwoDashboard'
+    isEmbedded: false,
+    // embeddedComponent: 'ProjectTwoDashboard'
   },
   'project-three': {
     title: 'Project Three',
