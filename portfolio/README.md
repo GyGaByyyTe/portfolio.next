@@ -1,4 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend Developer Portfolio
+
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Modern, responsive design
+- Project showcase with embedded demos
+- Experience timeline
+- Downloadable CV
+- Built-in interactive projects
+
+## Project Structure
+
+```
+portfolio/
+├── public/
+│   ├── images/
+│   │   ├── profile/     # Profile pictures
+│   │   └── projects/    # Project screenshots and previews
+│   └── cv.pdf          # Your CV file
+├── src/
+│   ├── app/            # Next.js app directory
+│   │   ├── experience/ # Experience page
+│   │   ├── projects/   # Projects pages
+│   │   └── layout.tsx  # Root layout
+│   └── data/           # Data files
+│       └── projects.ts # Project data
+```
+
+## Setup Instructions
+
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Create the following directories in `public/images/`:
+   - `profile/` - Add your profile picture as `profile.jpg`
+   - `projects/` - Add project screenshots as `project1.jpg`, `project2.jpg`, etc.
+4. Add your CV file as `public/cv.pdf`
+5. Update the project data in `src/data/projects.ts`
+6. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+## Customization
+
+1. Update personal information in `src/app/layout.tsx`
+2. Modify project data in `src/data/projects.ts`
+3. Add your own embedded projects in the `src/app/projects/[slug]` directory
+4. Customize styles in `src/app/globals.css`
+
+## Technologies Used
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- React
+- ESLint
+- Prettier
+
+## License
+
+MIT
 
 ## Getting Started
 

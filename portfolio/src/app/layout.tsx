@@ -8,6 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Frontend Developer Portfolio",
   description: "Professional portfolio showcasing frontend development skills and projects",
+  keywords: ["Frontend Developer", "React", "Next.js", "TypeScript", "Portfolio"],
 };
 
 export default function RootLayout({
@@ -43,6 +44,39 @@ export default function RootLayout({
         <main className="pt-16 min-h-screen bg-gray-50">
           {children}
         </main>
+        <footer className="bg-white border-t">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="flex flex-col md:flex-row justify-between items-center">
+              <div className="text-gray-600">
+                © {new Date().getFullYear()} Your Name. All rights reserved.
+              </div>
+              <div className="flex space-x-6 mt-4 md:mt-0">
+                <a
+                  href="https://github.com/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="https://linkedin.com/in/yourusername"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="mailto:your.email@example.com"
+                  className="text-gray-600 hover:text-gray-900"
+                >
+                  Contact
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </body>
     </html>
   );

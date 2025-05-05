@@ -1,29 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-
-const projects = [
-  {
-    title: 'Project One',
-    description: 'A modern web application built with Next.js and TypeScript.',
-    image: '/project1-placeholder.jpg',
-    link: '/projects/project-one',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS']
-  },
-  {
-    title: 'Project Two',
-    description: 'Interactive dashboard with real-time data visualization.',
-    image: '/project2-placeholder.jpg',
-    link: '/projects/project-two',
-    technologies: ['React', 'D3.js', 'Node.js']
-  },
-  {
-    title: 'Project Three',
-    description: 'E-commerce platform with modern UI/UX design.',
-    image: '/project3-placeholder.jpg',
-    link: '/projects/project-three',
-    technologies: ['Next.js', 'Stripe', 'MongoDB']
-  }
-]
+import { projects } from '@/data/projects'
 
 export default function Projects() {
   return (
@@ -31,10 +8,10 @@ export default function Projects() {
       <h1 className="text-4xl font-bold text-gray-900 mb-12">Projects</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project, index) => (
+        {Object.entries(projects).map(([slug, project]) => (
           <Link
-            key={index}
-            href={project.link}
+            key={slug}
+            href={`/projects/${slug}`}
             className="group bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow overflow-hidden"
           >
             <div className="relative h-48">

@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { projects } from '@/data/projects'
+import dynamic from 'next/dynamic'
 
 type BaseProject = {
   title: string
@@ -24,37 +26,24 @@ type EmbeddedProject = BaseProject & {
 
 type Project = RegularProject | EmbeddedProject
 
-// This would typically come from a database or CMS
-const projects: Record<string, Project> = {
-  'project-one': {
-    title: 'Project One',
-    description: 'A modern web application built with Next.js and TypeScript.',
-    longDescription: 'Detailed description of the project, its features, and technologies used.',
-    image: '/project1-placeholder.jpg',
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/yourusername/project-one',
-    liveUrl: 'https://project-one.com',
-    isEmbedded: false
-  },
-  'project-two': {
-    title: 'Project Two',
-    description: 'Interactive dashboard with real-time data visualization.',
-    longDescription: 'A comprehensive dashboard that displays real-time data with interactive charts and graphs.',
-    image: '/project2-placeholder.jpg',
-    technologies: ['React', 'D3.js', 'Node.js'],
-    githubUrl: 'https://github.com/yourusername/project-two',
-    liveUrl: 'https://project-two.com',
-    isEmbedded: true,
-    embeddedComponent: 'ProjectTwoDashboard'
-  }
-}
-
 export default function ProjectPage({ params }: { params: { slug: string } }) {
   const project = projects[params.slug]
 
   if (!project) {
     notFound()
   }
+
+  // Dynamically import the embedded component if it exists
+  const EmbeddedComponent = project.isEmbedded
+    ? dynamic(() => import(`@/components/${project.embeddedComponent}`), {
+        loading: () => (
+          <div className="text-center py-8">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading component...</p>
+          </div>
+        ),
+      })
+    : null
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -112,14 +101,11 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
 
-      {project.isEmbedded && (
+      {project.isEmbedded && EmbeddedComponent && (
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Interactive Demo</h2>
           <div className="bg-white rounded-lg shadow-sm p-8">
-            {/* This is where you would render your embedded component */}
-            <div className="text-center text-gray-500">
-              Embedded component: {project.embeddedComponent}
-            </div>
+            <EmbeddedComponent />
           </div>
         </div>
       )}
