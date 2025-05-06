@@ -1,10 +1,12 @@
 'use client'
 
 import { useState } from 'react'
+import { themes } from '@/data/themes'
 
 export default function Calculator() {
   const [display, setDisplay] = useState('0')
   const [equation, setEquation] = useState('')
+  const theme = themes.calculator
 
   const handleNumber = (num: string) => {
     if (display === '0') {
@@ -35,12 +37,12 @@ export default function Calculator() {
   }
 
   return (
-    <div className="w-full max-w-xs sm:max-w-sm mx-auto bg-white rounded-lg shadow-lg p-4 sm:p-6">
+    <div className={`w-full max-w-xs sm:max-w-sm mx-auto ${theme.background.overlay} ${theme.borders.card} shadow-lg p-4 sm:p-6`}>
       <div className="mb-4">
-        <div className="text-right text-gray-500 text-sm h-6 font-mono">
+        <div className={`text-right text-gray-500 text-sm h-6 font-mono ${theme.animations.transition}`}>
           {equation}
         </div>
-        <div className="text-right text-2xl sm:text-3xl font-bold font-mono overflow-x-auto">
+        <div className={`text-right text-2xl sm:text-3xl font-bold font-mono overflow-x-auto ${theme.colors.text}`}>
           {display}
         </div>
       </div>
@@ -53,18 +55,17 @@ export default function Calculator() {
               else if (['+', '-', '*', '/'].includes(btn)) handleOperator(btn)
               else handleNumber(btn)
             }}
-            className={`p-3 sm:p-4 text-base sm:text-lg font-semibold rounded-lg transition-colors duration-200 ${
-              btn === '='
-                ? 'bg-blue-600 text-white hover:bg-blue-700'
-                : 'bg-gray-100 text-gray-800 hover:bg-gray-200'
-            }`}
+            className={`p-3 sm:p-4 text-base sm:text-lg font-semibold ${theme.borders.button} ${theme.animations.transition} ${btn === '='
+                ? `${theme.colors.primary} text-white`
+                : `${theme.colors.secondary} ${theme.colors.text}`
+              }`}
           >
             {btn}
           </button>
         ))}
         <button
           onClick={handleClear}
-          className="col-span-4 p-3 sm:p-4 text-base sm:text-lg font-semibold rounded-lg bg-red-100 text-red-800 hover:bg-red-200 transition-colors duration-200"
+          className={`col-span-4 p-3 sm:p-4 text-base sm:text-lg font-semibold ${theme.borders.button} bg-red-100 text-red-800 hover:bg-red-200 ${theme.animations.transition}`}
         >
           Clear
         </button>

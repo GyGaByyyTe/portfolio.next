@@ -24,7 +24,7 @@ export default function CalculatorProject() {
 
         <div className="p-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Interactive Calculator</h1>
-          
+
           <div className="flex flex-wrap gap-2 mb-6">
             {['React', 'TypeScript', 'Tailwind CSS'].map((tech) => (
               <span
