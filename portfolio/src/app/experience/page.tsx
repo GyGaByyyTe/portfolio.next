@@ -2,20 +2,35 @@ import Link from 'next/link'
 
 const experiences = [
   {
-    company: 'Company Name',
+    company: 'Trialize, Switzerland',
     position: 'Senior Frontend Developer',
-    period: '2022 - Present',
-    description: 'Led frontend development for enterprise applications using React and TypeScript.',
-    technologies: ['React', 'TypeScript', 'Next.js', 'Tailwind CSS']
+    period: 'Feb 2021 - Present',
+    description: 'Designed and developed a large-scale EDC SaaS platform from scratch, including real-time features using WebSockets, and complex UI components like virtualized tables and dashboards. Established CI/CD pipelines and optimized build systems.',
+    technologies: ['ReactJS', 'TypeScript', 'Redux', 'WebSockets', 'Material UI', 'Webpack', 'Bitbucket CI/CD', 'GitLab CI/CD', 'Figma']
   },
   {
-    company: 'Previous Company',
+    company: 'Sberbank, Saint Petersburg',
+    position: 'Senior Frontend Developer',
+    period: 'Oct 2019 - Feb 2021',
+    description: 'Led frontend development of a new IoT service with real-time dashboards. Created a custom BPMN editor and integrated Spring REST APIs for optimized performance.',
+    technologies: ['React', 'TypeScript', 'Redux', 'Redux-Saga', 'StompJS', 'REST API', 'bpmn-js']
+  },
+  {
+    company: 'KudaGo, Saint Petersburg',
     position: 'Frontend Developer',
-    period: '2020 - 2022',
-    description: 'Developed responsive web applications and collaborated with UX designers.',
-    technologies: ['React', 'JavaScript', 'CSS', 'HTML']
+    period: 'Feb 2019 - Sep 2019',
+    description: 'Enhanced a content delivery platform, built an admin system, and contributed to backend tasks in Python (Django).',
+    technologies: ['JavaScript', 'React', 'Redux', 'Redux-Saga', 'Python (Django)', 'Google Tag Manager', 'Google Optimize']
+  },
+  {
+    company: 'Dataduck, Saint Petersburg',
+    position: 'Frontend Developer',
+    period: 'May 2018 - Feb 2019',
+    description: 'Built interactive landing pages and mini-games, and developed a landing page template engine.',
+    technologies: ['JavaScript', 'React', 'Redux', 'PHP', 'HTML5', 'CSS3']
   }
-]
+];
+
 
 export default function Experience() {
   return (
