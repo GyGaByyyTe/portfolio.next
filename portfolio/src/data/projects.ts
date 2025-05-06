@@ -33,13 +33,13 @@ export const projects: Record<string, Project> = {
     embeddedComponent: 'Calculator'
   },
   'project-one': {
-    title: 'Project One',
+    title: 'Portfolio',
     description: 'A modern web application built with Next.js and TypeScript.',
     longDescription: 'Detailed description of the project, its features, and technologies used. This project demonstrates advanced state management, responsive design, and modern web development practices.',
     image: '/images/projects/project1.jpg',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS'],
     githubUrl: 'https://github.com/yourusername/project-one',
-    liveUrl: 'https://project-one.com',
+    liveUrl: 'https://andrei.does.cool/',
     isEmbedded: false
   },
   'project-two': {

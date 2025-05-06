@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 const experiences = [
   {
     company: 'Trialize, Switzerland',

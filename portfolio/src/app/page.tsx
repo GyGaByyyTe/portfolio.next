@@ -14,7 +14,7 @@ export default function Home() {
             I create beautiful, responsive, and user-friendly web applications.
           </p>
           <div className="flex space-x-4">
-            <Link 
+            <Link
               href="/experience"
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
             >

@@ -28,6 +28,7 @@ export default function Calculator() {
       setEquation('')
     } catch (error) {
       setDisplay('Error')
+      console.log(error)
     }
   }
 
