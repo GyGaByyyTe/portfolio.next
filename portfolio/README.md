@@ -1,14 +1,15 @@
 # Frontend Developer Portfolio
 
-A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS.
+A modern, responsive portfolio website built with Next.js, TypeScript, and Tailwind CSS. This portfolio is configured for static site generation, making it easy to deploy on any static hosting service.
 
 ## Features
 
-- Modern, responsive design
-- Project showcase with embedded demos
-- Experience timeline
-- Downloadable CV
-- Built-in interactive projects
+- Modern, responsive design with dynamic themes
+- Project showcase with embedded interactive demos
+- Static site generation for optimal performance
+- Dynamic project pages with custom themes
+- Built-in interactive projects (e.g., Calculator)
+- Optimized images with Next.js Image component
 
 ## Project Structure
 
@@ -21,11 +22,15 @@ portfolio/
 │   └── cv.pdf          # Your CV file
 ├── src/
 │   ├── app/            # Next.js app directory
-│   │   ├── experience/ # Experience page
 │   │   ├── projects/   # Projects pages
+│   │   │   ├── [slug]/ # Dynamic project pages
+│   │   │   └── page.tsx # Projects listing
 │   │   └── layout.tsx  # Root layout
-│   └── data/           # Data files
-│       └── projects.ts # Project data
+│   ├── components/     # React components
+│   │   └── Calculator/ # Interactive calculator demo
+│   └── data/          # Data files
+│       ├── projects.ts # Project data
+│       └── themes.ts   # Project-specific themes
 ```
 
 ## Setup Instructions
@@ -36,30 +41,60 @@ portfolio/
    npm install
    ```
 3. Create the following directories in `public/images/`:
-   - `profile/` - Add your profile picture as `profile.jpg`
-   - `projects/` - Add project screenshots as `project1.jpg`, `project2.jpg`, etc.
+   - `profile/` - Add your profile picture
+   - `projects/` - Add project screenshots
 4. Add your CV file as `public/cv.pdf`
 5. Update the project data in `src/data/projects.ts`
 6. Run the development server:
    ```bash
    npm run dev
    ```
+7. Build for production:
+   ```bash
+   npm run build
+   ```
 
 ## Customization
 
-1. Update personal information in `src/app/layout.tsx`
-2. Modify project data in `src/data/projects.ts`
-3. Add your own embedded projects in the `src/app/projects/[slug]` directory
+1. Update project data in `src/data/projects.ts`
+2. Customize themes in `src/data/themes.ts`
+3. Add new embedded projects:
+   - Create component in `src/components/`
+   - Add project data in `src/data/projects.ts`
+   - Add theme in `src/data/themes.ts`
 4. Customize styles in `src/app/globals.css`
 
 ## Technologies Used
 
-- Next.js 14
+- Next.js 15 (Static Export)
 - TypeScript
 - Tailwind CSS
 - React
 - ESLint
 - Prettier
+
+## Development
+
+```bash
+# Run development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run start
+```
+
+## Deployment
+
+This project is configured for static site generation (`output: 'export'` in `next.config.ts`), making it compatible with any static hosting service:
+
+- GitHub Pages
+- Netlify
+- Vercel
+- AWS S3
+- Any static file server
 
 ## License
 
