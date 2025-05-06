@@ -97,11 +97,11 @@ export default function RootLayout({
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
               <div className="text-gray-600 text-center md:text-left">
-                © {new Date().getFullYear()} Your Name. All rights reserved.
+                © 2025 Andrei Lebedev.
               </div>
               <div className="flex space-x-6">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/GyGaByyyTe?tab=repositories"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-gray-900"
@@ -109,7 +109,7 @@ export default function RootLayout({
                   GitHub
                 </a>
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/a-lebedev-gygabyyyte/?locale=en_US"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-600 hover:text-gray-900"
@@ -117,7 +117,7 @@ export default function RootLayout({
                   LinkedIn
                 </a>
                 <a
-                  href="mailto:your.email@example.com"
+                  href="mailto:gygabyyyte@gmail.com"
                   className="text-gray-600 hover:text-gray-900"
                 >
                   Contact

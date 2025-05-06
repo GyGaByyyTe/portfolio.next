@@ -27,9 +27,12 @@ type EmbeddedProject = BaseProject & {
 
 type Project = RegularProject | EmbeddedProject
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects[params.slug]
-  const theme = themes[params.slug] || themes.default
+
+
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const project = projects[slug]
+  const theme = themes[slug] || themes.default
 
   if (!project) {
     notFound()
@@ -38,13 +41,13 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   // Dynamically import the embedded component if it exists
   const EmbeddedComponent = project.isEmbedded
     ? dynamic(() => import(`@/components/${project.embeddedComponent}`), {
-        loading: () => (
-          <div className="text-center py-8">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading component...</p>
-          </div>
-        ),
-      })
+      loading: () => (
+        <div className="text-center py-8">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+          <p className="mt-4 text-gray-600">Loading component...</p>
+        </div>
+      ),
+    })
     : null
 
   return (
@@ -98,7 +101,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
             <h1 className={`${theme.typography.heading} ${theme.colors.text} mb-4`}>
               {project.title}
             </h1>
-            
+
             <div className="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech) => (
                 <span

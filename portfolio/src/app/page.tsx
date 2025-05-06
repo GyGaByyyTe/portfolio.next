@@ -7,7 +7,7 @@ export default function Home() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
-            Hi, I'm <span className="text-blue-600">Your Name</span>
+            Hi, I'm <span className="text-blue-600">Andrei Lebedev</span>
           </h1>
           <p className="text-xl text-gray-600">
             A passionate Frontend Developer with expertise in modern web technologies.
@@ -30,7 +30,7 @@ export default function Home() {
         </div>
         <div className="relative h-[400px] rounded-lg overflow-hidden shadow-xl">
           <Image
-            src="/profile-placeholder.jpg"
+            src="https://i.pravatar.cc/400?u=gygabyyyyyte"
             alt="Profile picture"
             fill
             className="object-cover"
