@@ -3,6 +3,51 @@
 import { useEffect, useRef, useState } from 'react';
 import { themes } from '@/data/themes';
 
+const CONTAINER_STYLES = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: '24px',
+  padding: '24px'
+} as const;
+
+const CANVAS_STYLES = {
+  border: '1px solid #333',
+  borderRadius: '8px'
+} as const;
+
+const TIMER_STYLES = {
+  fontSize: '36px',
+  fontWeight: 'bold',
+  fontFamily: 'monospace',
+  color: '#fff'
+} as const;
+
+const BUTTON_CONTAINER_STYLES = {
+  display: 'flex',
+  gap: '16px'
+} as const;
+
+const BASE_BUTTON_STYLES = {
+  padding: '12px 24px',
+  fontSize: '24px',
+  fontWeight: 'bold',
+  color: '#ffffff',
+  border: '2px solid #ffffff',
+  borderRadius: '50px',
+  cursor: 'pointer'
+} as const;
+
+const START_BUTTON_STYLES = {
+  ...BASE_BUTTON_STYLES,
+  backgroundColor: '#0066cc'
+} as const;
+
+const RESET_BUTTON_STYLES = {
+  ...BASE_BUTTON_STYLES,
+  backgroundColor: '#cc0000'
+} as const;
+
 interface BombTimerProps {
   initialMilliseconds: number;
   onReset: () => void;
@@ -270,26 +315,28 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6 p-6">
+    <div style={CONTAINER_STYLES}>
       <canvas
         ref={canvasRef}
         width={400}
         height={400}
-        className="border border-gray-800 rounded-lg"
+        style={CANVAS_STYLES}
       />
 
-      <div className={`text-4xl font-bold font-mono ${theme.colors.text}`}>{formatTime(timeLeft)}</div>
+      <div style={TIMER_STYLES}>
+        {formatTime(timeLeft)}
+      </div>
 
-      <div className="flex gap-4">
+      <div style={BUTTON_CONTAINER_STYLES}>
         <button
           onClick={() => setIsRunning(!isRunning)}
-          className={`px-6 py-2 text-xl font-bold rounded-full ${theme.animations.transition} ${theme.colors.primary} text-white`}
+          style={START_BUTTON_STYLES}
         >
           {isRunning ? 'Pause' : 'Start'}
         </button>
         <button
           onClick={onReset}
-          className={`px-6 py-2 text-xl font-bold rounded-full ${theme.animations.transition} bg-red-600 hover:bg-red-700 text-white`}
+          style={RESET_BUTTON_STYLES}
         >
           Reset
         </button>
