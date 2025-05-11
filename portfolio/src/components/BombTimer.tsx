@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useRef, useState } from 'react';
 
 interface BombTimerProps {
@@ -52,15 +54,15 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
       // Draw wavy fuse
       const fuseLength = Math.min(radius * 2.5, canvas.width - centerX - 20);
       const currentFuseLength = fuseLength * visualProgressRef.current;
-      
+
       const startX = centerX;
       const startY = centerY - radius * 0.8;
-      
+
       // Create wavy pattern
       const segments = 40;
       const segmentLength = fuseLength / segments;
       const amplitude = 15;
-      
+
       // Create points array for the fuse path
       const points: { x: number; y: number }[] = [];
       for (let i = 0; i <= segments; i++) {
@@ -91,7 +93,7 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
           const dx = point.x - prevPoint.x;
           const dy = point.y - prevPoint.y;
           const length = Math.sqrt(dx * dx + dy * dy);
-          
+
           ctx.beginPath();
           for (let j = 0; j < length; j += 3) {
             const t = j / length;
@@ -115,10 +117,10 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
           const currentPoint = points[sparkIndex];
           const nextPoint = points[sparkIndex + 1];
           const fraction = (sparkProgressRef.current * segments) % 1;
-          
+
           const sparkX = currentPoint.x + (nextPoint.x - currentPoint.x) * fraction;
           const sparkY = currentPoint.y + (nextPoint.y - currentPoint.y) * fraction;
-          
+
           // Draw spark glow
           const gradient = ctx.createRadialGradient(
             sparkX, sparkY, 0,
@@ -127,7 +129,7 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
           gradient.addColorStop(0, 'rgba(255, 255, 0, 0.8)');
           gradient.addColorStop(0.5, 'rgba(255, 128, 0, 0.4)');
           gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
-          
+
           ctx.beginPath();
           ctx.arc(sparkX, sparkY, 15, 0, Math.PI * 2);
           ctx.fillStyle = gradient;
@@ -145,7 +147,7 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
             const distance = Math.random() * 8 + 4;
             const smallSparkX = sparkX + Math.cos(angle) * distance;
             const smallSparkY = sparkY + Math.sin(angle) * distance;
-            
+
             ctx.beginPath();
             ctx.arc(smallSparkX, smallSparkY, 2, 0, Math.PI * 2);
             ctx.fillStyle = '#ff8800';
@@ -178,18 +180,18 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
 
         // Calculate target progress based on remaining time
         const targetProgress = timeLeft / totalTimeRef.current;
-        
+
         // Update both spark and visual progress to match target
         sparkProgressRef.current = targetProgress;
         visualProgressRef.current = targetProgress;
-        
+
         // Clamp progress between 0 and 1
         sparkProgressRef.current = Math.max(0, Math.min(1, sparkProgressRef.current));
         visualProgressRef.current = Math.max(0, Math.min(1, visualProgressRef.current));
 
         // Update actual time state
         setTimeLeft(prev => Math.max(0, prev - deltaTime));
-        
+
         drawBomb();
         animationFrameRef.current = requestAnimationFrame(animate);
       }
@@ -228,9 +230,9 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
         height={400}
         className="border border-gray-800 rounded-lg"
       />
-      
+
       <div className="text-4xl font-bold">{formatTime(timeLeft)}</div>
-      
+
       <div className="flex gap-4">
         <button
           onClick={() => setIsRunning(!isRunning)}

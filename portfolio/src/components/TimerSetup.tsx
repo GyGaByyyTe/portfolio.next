@@ -1,3 +1,5 @@
+"use client"
+
 import { useState } from 'react';
 
 interface TimerSetupProps {
@@ -15,9 +17,9 @@ export const TimerSetup = ({ onNext }: TimerSetupProps) => {
 
   const handleNumberClick = (num: number) => {
     const maxLength = activeField === 'milliseconds' ? 3 : 2;
-    const currentValue = activeField === 'hours' ? hours : 
-                        activeField === 'minutes' ? minutes :
-                        activeField === 'seconds' ? seconds : milliseconds;
+    const currentValue = activeField === 'hours' ? hours :
+      activeField === 'minutes' ? minutes :
+        activeField === 'seconds' ? seconds : milliseconds;
 
     if (currentValue.length < maxLength) {
       const newValue = currentValue + num.toString();
@@ -42,7 +44,7 @@ export const TimerSetup = ({ onNext }: TimerSetupProps) => {
     const ms = parseInt(milliseconds) || 0;
 
     const totalMilliseconds = (h * 3600 + m * 60 + s) * 1000 + ms;
-    
+
     if (totalMilliseconds > 0) {
       onNext(totalMilliseconds);
     }
@@ -82,7 +84,7 @@ export const TimerSetup = ({ onNext }: TimerSetupProps) => {
           <span className="text-sm text-gray-400">мс</span>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-3 gap-4">
         {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
           <button

@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { TimerSetup } from './components/TimerSetup';
-import { BombTimer } from './components/BombTimer';
+import { TimerSetup } from '@/components/TimerSetup';
+import { BombTimer } from '@/components/BombTimer';
 
 export default function TimerPage() {
   const [totalMilliseconds, setTotalMilliseconds] = useState<number | null>(null);
