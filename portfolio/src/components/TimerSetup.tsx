@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { themes } from '@/data/themes';
+import { NumberPad } from './NumberPad';
 
 interface TimerSetupProps {
   onNext: (totalMilliseconds: number) => void;
@@ -57,68 +58,37 @@ export const TimerSetup = ({ onNext }: TimerSetupProps) => {
   };
 
   const getFieldStyle = (field: TimeField) => {
-    const baseStyle = `px-4 py-2 text-lg font-bold rounded-full transition-colors ${theme.animations.transition}`;
+    const baseStyle = `px-3 py-1.5 text-sm font-bold rounded-full transition-colors ${theme.animations.transition}`;
     return activeField === field
       ? `${baseStyle} ${theme.colors.primary} text-white`
       : `${baseStyle} ${theme.colors.secondary} ${theme.colors.text}`;
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <div className="flex items-center gap-2 text-6xl font-bold">
+    <div className="flex flex-col items-center gap-4">
+      <div className="flex items-center gap-1 text-4xl sm:text-5xl font-bold">
         <div className="flex flex-col items-center">
-          <span className={activeField === 'hours' ? theme.colors.accent : theme.colors.text}>{formatTimeUnit(hours, 2)}</span>
-          <span className="text-sm text-gray-500">часы</span>
+          <span className={`${activeField === 'hours' ? theme.colors.accent : theme.colors.text} font-mono`}>{formatTimeUnit(hours, 2)}</span>
+          <span className="text-xs text-gray-500">часы</span>
         </div>
         <span className={theme.colors.text}>:</span>
         <div className="flex flex-col items-center">
-          <span className={activeField === 'minutes' ? theme.colors.accent : theme.colors.text}>{formatTimeUnit(minutes, 2)}</span>
-          <span className="text-sm text-gray-500">минуты</span>
+          <span className={`${activeField === 'minutes' ? theme.colors.accent : theme.colors.text} font-mono`}>{formatTimeUnit(minutes, 2)}</span>
+          <span className="text-xs text-gray-500">минуты</span>
         </div>
         <span className={theme.colors.text}>:</span>
         <div className="flex flex-col items-center">
-          <span className={activeField === 'seconds' ? theme.colors.accent : theme.colors.text}>{formatTimeUnit(seconds, 2)}</span>
-          <span className="text-sm text-gray-500">секунды</span>
+          <span className={`${activeField === 'seconds' ? theme.colors.accent : theme.colors.text} font-mono`}>{formatTimeUnit(seconds, 2)}</span>
+          <span className="text-xs text-gray-500">секунды</span>
         </div>
         <span className={theme.colors.text}>.</span>
         <div className="flex flex-col items-center">
-          <span className={activeField === 'milliseconds' ? theme.colors.accent : theme.colors.text}>{formatTimeUnit(milliseconds, 3)}</span>
-          <span className="text-sm text-gray-500">мс</span>
+          <span className={`${activeField === 'milliseconds' ? theme.colors.accent : theme.colors.text} font-mono`}>{formatTimeUnit(milliseconds, 3)}</span>
+          <span className="text-xs text-gray-500">мс</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-2 sm:gap-3">
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((num) => (
-          <button
-            key={num}
-            onClick={() => handleNumberClick(num)}
-            className={`p-3 sm:p-4 text-base sm:text-lg font-semibold ${theme.borders.button} ${theme.animations.transition} ${theme.colors.secondary} ${theme.colors.text}`}
-          >
-            {num}
-          </button>
-        ))}
-        <button
-          onClick={handleClear}
-          className={`p-3 sm:p-4 text-base sm:text-lg font-semibold ${theme.borders.button} bg-red-100 text-red-800 hover:bg-red-200 ${theme.animations.transition}`}
-        >
-          C
-        </button>
-        <button
-          onClick={() => handleNumberClick(0)}
-          className={`p-3 sm:p-4 text-base sm:text-lg font-semibold ${theme.borders.button} ${theme.animations.transition} ${theme.colors.secondary} ${theme.colors.text}`}
-        >
-          0
-        </button>
-        <button
-          onClick={handleNext}
-          disabled={!hours && !minutes && !seconds && !milliseconds}
-          className={`col-span-2 p-3 sm:p-4 text-base sm:text-lg font-semibold ${theme.borders.button} ${theme.animations.transition} ${theme.colors.primary} text-white disabled:opacity-50 disabled:cursor-not-allowed`}
-        >
-          →
-        </button>
-      </div>
-
-      <div className="grid grid-cols-4 gap-2 sm:gap-3">
+      <div className="flex flex-wrap justify-center gap-2">
         <button
           onClick={() => setActiveField('hours')}
           className={getFieldStyle('hours')}
@@ -144,6 +114,13 @@ export const TimerSetup = ({ onNext }: TimerSetupProps) => {
           Мс
         </button>
       </div>
+
+      <NumberPad
+        onNumberClick={handleNumberClick}
+        onClear={handleClear}
+        onNext={handleNext}
+        isNextDisabled={!hours && !minutes && !seconds && !milliseconds}
+      />
     </div>
   );
 }; 

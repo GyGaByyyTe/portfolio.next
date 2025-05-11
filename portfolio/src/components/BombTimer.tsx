@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react';
+import { themes } from '@/data/themes';
 
 interface BombTimerProps {
   initialMilliseconds: number;
@@ -16,6 +17,7 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
   const animationFrameRef = useRef<number | null>(null);
   const sparkProgressRef = useRef<number>(1);
   const totalTimeRef = useRef<number>(initialMilliseconds);
+  const theme = themes.calculator;
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -231,18 +233,18 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
         className="border border-gray-800 rounded-lg"
       />
 
-      <div className="text-4xl font-bold">{formatTime(timeLeft)}</div>
+      <div className={`text-4xl font-bold font-mono ${theme.colors.text}`}>{formatTime(timeLeft)}</div>
 
       <div className="flex gap-4">
         <button
           onClick={() => setIsRunning(!isRunning)}
-          className="px-6 py-2 text-xl font-bold bg-blue-800 rounded-full hover:bg-blue-700 transition-colors"
+          className={`px-6 py-2 text-xl font-bold rounded-full ${theme.animations.transition} ${theme.colors.primary} text-white`}
         >
           {isRunning ? 'Pause' : 'Start'}
         </button>
         <button
           onClick={onReset}
-          className="px-6 py-2 text-xl font-bold bg-red-800 rounded-full hover:bg-red-700 transition-colors"
+          className={`px-6 py-2 text-xl font-bold rounded-full ${theme.animations.transition} bg-red-600 hover:bg-red-700 text-white`}
         >
           Reset
         </button>
