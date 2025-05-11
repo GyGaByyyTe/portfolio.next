@@ -5,23 +5,23 @@ import { TimerSetup } from './components/TimerSetup';
 import { BombTimer } from './components/BombTimer';
 
 export default function TimerPage() {
-  const [minutes, setMinutes] = useState<number | null>(100);
+  const [totalMilliseconds, setTotalMilliseconds] = useState<number | null>(null);
 
-  const handleSetupComplete = (mins: number) => {
-    setMinutes(mins);
+  const handleSetupComplete = (ms: number) => {
+    setTotalMilliseconds(ms);
   };
 
   const handleReset = () => {
-    setMinutes(null);
+    setTotalMilliseconds(null);
   };
 
   return (
     <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
       <div className="max-w-md w-full bg-gray-800 rounded-xl shadow-2xl">
-        {minutes === null ? (
+        {totalMilliseconds === null ? (
           <TimerSetup onNext={handleSetupComplete} />
         ) : (
-          <BombTimer initialMinutes={minutes} onReset={handleReset} />
+          <BombTimer initialMilliseconds={totalMilliseconds} onReset={handleReset} />
         )}
       </div>
     </div>
