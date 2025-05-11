@@ -48,7 +48,7 @@ export const projects: Record<string, Project> = {
     longDescription: 'A modern timer built with React and TypeScript. Features include precise time input, countdown functionality, and a clean, responsive design. This project demonstrates state management, animations, and component composition in React.',
     image: '/images/projects/timer.jpg',
     technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/yourusername/timer',
+    githubUrl: 'https://github.com/GyGaByyyTe/portfolio.next/tree/main/portfolio/src/app/projects/timer',
     liveUrl: '/projects/timer',
     isEmbedded: true,
     embeddedComponent: 'Timer'

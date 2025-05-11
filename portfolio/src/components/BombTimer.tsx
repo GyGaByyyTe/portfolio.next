@@ -34,23 +34,41 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
       // Clear canvas
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Draw bomb body (more cartoon-like)
+      // Draw bomb body (classic cartoon style)
       ctx.beginPath();
       ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.fillStyle = '#444';
+      ctx.fillStyle = '#000000';
       ctx.fill();
-      ctx.strokeStyle = '#222';
-      ctx.lineWidth = 8;
+      ctx.strokeStyle = '#333333';
+      ctx.lineWidth = 4;
       ctx.stroke();
 
-      // Draw bomb details
-      // Top cap
+      // Add main highlight
+      const gradient = ctx.createRadialGradient(
+        centerX - radius * 0.3,
+        centerY - radius * 0.3,
+        0,
+        centerX - radius * 0.3,
+        centerY - radius * 0.3,
+        radius * 0.8
+      );
+      gradient.addColorStop(0, 'rgba(255, 255, 255, 0.2)');
+      gradient.addColorStop(0.5, 'rgba(255, 255, 255, 0.1)');
+      gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+
       ctx.beginPath();
-      ctx.arc(centerX, centerY - radius * 0.8, radius * 0.2, 0, Math.PI * 2);
-      ctx.fillStyle = '#666';
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
       ctx.fill();
-      ctx.strokeStyle = '#444';
-      ctx.lineWidth = 4;
+
+      // Draw fuse attachment point
+      const fuseStartY = centerY - radius * 0.8;
+      ctx.beginPath();
+      ctx.arc(centerX, fuseStartY, radius * 0.08, 0, Math.PI * 2);
+      ctx.fillStyle = '#000000';
+      ctx.fill();
+      ctx.strokeStyle = '#333333';
+      ctx.lineWidth = 2;
       ctx.stroke();
 
       // Draw wavy fuse
@@ -58,7 +76,7 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
       const currentFuseLength = fuseLength * visualProgressRef.current;
 
       const startX = centerX;
-      const startY = centerY - radius * 0.8;
+      const startY = fuseStartY;
 
       // Create wavy pattern
       const segments = 40;
@@ -158,20 +176,47 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
         }
       }
 
-      // Draw bomb details (eyes and mouth)
+      // Draw bomb details (classic cartoon style)
       // Eyes
       ctx.beginPath();
-      ctx.arc(centerX - radius * 0.3, centerY - radius * 0.2, radius * 0.1, 0, Math.PI * 2);
-      ctx.arc(centerX + radius * 0.3, centerY - radius * 0.2, radius * 0.1, 0, Math.PI * 2);
-      ctx.fillStyle = '#fff';
+      ctx.arc(centerX - radius * 0.3, centerY - radius * 0.2, radius * 0.12, 0, Math.PI * 2);
+      ctx.arc(centerX + radius * 0.3, centerY - radius * 0.2, radius * 0.12, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
       ctx.fill();
 
-      // Mouth
+      // Pupils
       ctx.beginPath();
-      ctx.arc(centerX, centerY + radius * 0.2, radius * 0.3, 0, Math.PI);
-      ctx.strokeStyle = '#fff';
+      ctx.arc(centerX - radius * 0.3, centerY - radius * 0.2, radius * 0.05, 0, Math.PI * 2);
+      ctx.arc(centerX + radius * 0.3, centerY - radius * 0.2, radius * 0.05, 0, Math.PI * 2);
+      ctx.fillStyle = '#000000';
+      ctx.fill();
+
+      // Add eye highlights
+      ctx.beginPath();
+      ctx.arc(centerX - radius * 0.35, centerY - radius * 0.25, radius * 0.03, 0, Math.PI * 2);
+      ctx.arc(centerX + radius * 0.25, centerY - radius * 0.25, radius * 0.03, 0, Math.PI * 2);
+      ctx.fillStyle = '#ffffff';
+      ctx.fill();
+
+      // Mouth (worried expression)
+      ctx.beginPath();
+      ctx.arc(centerX, centerY + radius * 0.2, radius * 0.3, Math.PI * 0.1, Math.PI * 0.9);
+      ctx.strokeStyle = '#ffffff';
       ctx.lineWidth = 4;
       ctx.stroke();
+
+      // Add additional highlights
+      // Top highlight
+      ctx.beginPath();
+      ctx.arc(centerX - radius * 0.3, centerY - radius * 0.3, radius * 0.1, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
+      ctx.fill();
+
+      // Side highlight
+      ctx.beginPath();
+      ctx.arc(centerX + radius * 0.4, centerY, radius * 0.15, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.fill();
     };
 
     const animate = () => {
