@@ -43,15 +43,15 @@ export const projects: Record<string, Project> = {
     isEmbedded: false
   },
   'timer': {
-    title: 'Time Bomb',
-    description: 'A time bomb that counts down to zero and explodes when it reaches zero.',
-    longDescription: 'A time bomb that counts down to zero and explodes when it reaches zero.',
+    title: 'Interactive Timer',
+    description: 'A modern timer built with React and TypeScript.',
+    longDescription: 'A modern timer built with React and TypeScript. Features include precise time input, countdown functionality, and a clean, responsive design. This project demonstrates state management, animations, and component composition in React.',
     image: '/images/projects/timer.jpg',
     technologies: ['React', 'TypeScript', 'Tailwind CSS'],
-    githubUrl: 'https://github.com/yourusername/time-bomb',
-    liveUrl: 'https://andrei.does.cool/projects/timer',
+    githubUrl: 'https://github.com/yourusername/timer',
+    liveUrl: '/projects/timer',
     isEmbedded: true,
-    embeddedComponent: 'BombTimer'
+    embeddedComponent: 'Timer'
   },
   'project-two': {
     title: 'Project Two',
