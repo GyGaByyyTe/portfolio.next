@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef, useState } from 'react';
-import { themes } from '@/data/themes';
 
 const CONTAINER_STYLES = {
   display: 'flex',
@@ -20,7 +19,7 @@ const TIMER_STYLES = {
   fontSize: '36px',
   fontWeight: 'bold',
   fontFamily: 'monospace',
-  color: '#fff'
+  color: 'black'
 } as const;
 
 const BUTTON_CONTAINER_STYLES = {
@@ -62,7 +61,7 @@ export const BombTimer = ({ initialMilliseconds, onReset }: BombTimerProps) => {
   const animationFrameRef = useRef<number | null>(null);
   const sparkProgressRef = useRef<number>(1);
   const totalTimeRef = useRef<number>(initialMilliseconds);
-  const theme = themes.calculator;
+
 
   useEffect(() => {
     const canvas = canvasRef.current;

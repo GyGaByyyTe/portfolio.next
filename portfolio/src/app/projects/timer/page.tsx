@@ -20,7 +20,7 @@ export default function TimerProject() {
             src="/images/projects/timer.jpg"
             alt="Timer Project"
             fill
-            className="object-cover"
+            className="object-contain"
           />
         </div>
 

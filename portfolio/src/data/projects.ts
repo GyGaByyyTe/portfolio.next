@@ -53,25 +53,29 @@ export const projects: Record<string, Project> = {
     isEmbedded: true,
     embeddedComponent: 'Timer'
   },
-  'project-two': {
-    title: 'Project Two',
-    description: 'Interactive dashboard with real-time data visualization.',
-    longDescription: 'A comprehensive dashboard that displays real-time data with interactive charts and graphs. Features include data filtering, custom visualizations, and real-time updates.',
-    image: '/images/projects/project2.jpg',
-    technologies: ['React', 'D3.js', 'Node.js'],
-    githubUrl: 'https://github.com/yourusername/project-two',
-    liveUrl: 'https://project-two.com',
+  'next.food': {
+    title: 'Food Platform',
+    description: 'A platform for food enthusiasts to share recipes, discover new dishes, and connect with other food lovers.',
+    longDescription: 'A web application that allows users to:\n' +
+        '\n' +
+        'Share their favorite recipes with the world\n' +
+        'Discover new dishes from other food enthusiasts\n' +
+        'Connect with like-minded people in the food community\n' +
+        'Participate in exclusive food-related events',
+    image: '/images/projects/food.jpg',
+    technologies: ['React 18', 'Next.js 15', 'TypeScript', 'SQLite3', 'CSS Modules', 'Jest', 'React Testing Library'],
+    githubUrl: 'https://github.com/GyGaByyyTe/next.level.food',
+    liveUrl: 'http://food.does.cool',
     isEmbedded: false,
-    // embeddedComponent: 'ProjectTwoDashboard'
   },
-  'project-three': {
-    title: 'Project Three',
-    description: 'E-commerce platform with modern UI/UX design.',
-    longDescription: 'A full-featured e-commerce platform with product management, shopping cart, and secure payment processing. Built with modern web technologies and best practices.',
-    image: '/images/projects/project3.jpg',
-    technologies: ['Next.js', 'Stripe', 'MongoDB'],
-    githubUrl: 'https://github.com/yourusername/project-three',
-    liveUrl: 'https://project-three.com',
+  'amazon': {
+    title: 'Extension: Amazon Quick Access',
+    description: 'A Chrome extension that allows quick searching of selected text across various regional Amazon websites.',
+    longDescription: 'This Chrome extension provides a convenient way to search for products on Amazon using either the popup interface or context menu. It supports multiple regional domains and offers a user-friendly interface for quick access to Amazon search functionality.',
+    image: '/images/projects/amazon.jpg',
+    technologies: ['JavaScript', 'HTML', 'CSS', 'Chrome Extension API', 'Manifest_v3'],
+    githubUrl: 'https://github.com/GyGaByyyTe/amazon-quick-access',
+    liveUrl: 'https://chromewebstore.google.com/detail/amazon-quick-access/hdjbgcfphpnbbndnnkplclkfjaedmhbe',
     isEmbedded: false
   }
 } 

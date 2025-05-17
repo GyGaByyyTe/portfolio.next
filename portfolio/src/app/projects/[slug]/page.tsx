@@ -63,7 +63,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             src={theme.background.image}
             alt=""
             fill
-            className="object-cover"
+            className="object-contain"
             priority
           />
           <div className="absolute inset-0 bg-black/20" />
@@ -97,7 +97,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover"
+              className="object-contain"
               priority
             />
           </div>
@@ -118,7 +118,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               ))}
             </div>
 
-            <p className={`${theme.typography.body} ${theme.colors.text} mb-8`}>
+            <p className={`${theme.typography.body} ${theme.colors.text} mb-8 whitespace-pre-wrap`}>
               {project.longDescription}
             </p>
 
